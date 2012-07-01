@@ -49,14 +49,14 @@ class MPlayer:
         Sends command 'name' to process, with given args
         """
 
-        print('1',name)
-        print('2',args)
-        print('3',' '.join(repr(a) for a in args))
+        #print('1',name)
+        #print('2',args)
+        #print('3',' '.join(repr(a) for a in args))
         cmd = '{0}{1}{2}\n'.format(name,
             ' ' if args else '',
             ' '.join(a for a in args))
 
-        self._mplayer.stdin.write(bytes(cmd, 'ascii'))
+        self._mplayer.stdin.write(bytes(cmd, 'utf-8'))
         self._mplayer.stdin.flush()
         if name == 'quit':
             return
