@@ -41,7 +41,7 @@ class Player:
     self.mp.loadfile('"' + path + '"');
     length = float(self.mp.get_property("length"))
     print((self.quit, self.cancel_alarm, length))
-    self.alarm_q.put((self.quit, self.cancel_alarm, length))
+    self.alarm_q.put((self.next, self.cancel_alarm, length))
 
   def next(self):
     self.mp = MPlayer()
@@ -50,8 +50,7 @@ class Player:
     self.scr.refresh()
     self.mp.loadfile(f);
     length = float(self.mp.get_property("length"))
-    self.alarm_q.put((self.quit, self.cancel_alarm, length))
-
+    self.alarm_q.put((self.next, self.cancel_alarm, length))
 
   def pause(self):
     self.mp.pause()
