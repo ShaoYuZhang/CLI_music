@@ -28,9 +28,9 @@ class MPlayer:
 
     def __init__(self, logfile='/dev/null'):
         self._mplayer = subprocess.Popen(
-            [self.exe_name, '-slave', 
+            [self.exe_name, '-slave', '-vo', 'null',
         # Don't want any message... except global ones. (for get_property)
-              '-really-quiet', '-msglevel', 'global=6', 
+              '-really-quiet', '-msglevel', 'global=5', 
         # '-msgmodule', // to check which module message is coming
               '-idle'],
                 stdin=subprocess.PIPE, 
@@ -91,7 +91,6 @@ class MPlayer:
             if not (%(minargc)d <= len(args) <= %(argc)d):
                 raise TypeError('%(name)s takes %(argc)d arguments (%%d given)'%%len(args))
             ret = self.command('%(name)s', *args)
-            print(ret)
             if not ret:
                 return None
 
